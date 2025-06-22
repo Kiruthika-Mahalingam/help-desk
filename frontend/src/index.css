@@ -1,78 +1,119 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Basic styles without Tailwind directives to avoid PostCSS issues */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@layer components {
-  .btn {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
-  }
-  
-  .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700;
-  }
-  
-  .btn-secondary {
-    @apply btn bg-gray-100 text-gray-900 hover:bg-gray-200;
-  }
-  
-  .btn-danger {
-    @apply btn bg-danger-600 text-white hover:bg-danger-700;
-  }
-  
-  .btn-success {
-    @apply btn bg-success-600 text-white hover:bg-success-700;
-  }
-  
-  .card {
-    @apply rounded-lg border bg-white p-6 shadow-sm;
-  }
-  
-  .input {
-    @apply flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-  }
-  
-  .textarea {
-    @apply flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-  }
-  
-  .select {
-    @apply flex h-10 w-full items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-  }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.card {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.input, .textarea, .select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background: white;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .status-open {
-  @apply text-danger-600 bg-danger-50 px-2 py-1 rounded-full text-xs font-medium;
+  color: #dc2626;
+  background-color: #fef2f2;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .status-in-progress {
-  @apply text-warning-600 bg-warning-50 px-2 py-1 rounded-full text-xs font-medium;
+  color: #d97706;
+  background-color: #fffbeb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .status-resolved {
-  @apply text-success-600 bg-success-50 px-2 py-1 rounded-full text-xs font-medium;
+  color: #16a34a;
+  background-color: #f0fdf4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .status-closed {
-  @apply text-gray-600 bg-gray-50 px-2 py-1 rounded-full text-xs font-medium;
+  color: #6b7280;
+  background-color: #f9fafb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .priority-high {
-  @apply text-danger-600 font-semibold;
+  color: #dc2626;
+  font-weight: 600;
 }
 
 .priority-medium {
-  @apply text-warning-600 font-medium;
+  color: #d97706;
+  font-weight: 500;
 }
 
 .priority-low {
-  @apply text-success-600 font-normal;
+  color: #16a34a;
+  font-weight: 400;
 }

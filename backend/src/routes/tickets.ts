@@ -114,11 +114,16 @@ router.get('/', asyncHandler(async (req, res) => {
   });
 }));
 
-// Get ticket by ID
+// Get ticket by ID  
 router.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
   
-  const ticketResult = await db.query('SELECT * FROM tickets WHERE id = $1', [id]);
+  // Validate that id is a number
+  if (isNaN(parseInt(id))) {
+    throw createError('Invalid ticket ID', 400);
+  }
+  
+  const ticketResult = await db.query('SELECT * FROM tickets WHERE id = $1', [parseInt(id)]);
   
   if (ticketResult.rows.length === 0) {
     throw createError('Ticket not found', 404);
