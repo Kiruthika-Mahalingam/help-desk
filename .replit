@@ -1,4 +1,4 @@
-modules = ["python-3.11"]
+modules = ["python-3.11", "nodejs-20", "postgresql-16"]
 
 [nix]
 channel = "stable-24_05"
@@ -18,17 +18,38 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "HelpDesk Pro Server"
+args = "HelpDesk Pro"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Backend API"
 
 [[workflows.workflow]]
-name = "HelpDesk Pro Server"
+name = "HelpDesk Pro"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "streamlit run app.py --server.port 5000"
+args = "cd frontend && npm run dev"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Backend API"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd backend && PORT=5001 npm run dev"
+waitForPort = 5001
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
 
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 5001
+externalPort = 3001

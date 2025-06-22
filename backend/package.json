@@ -1,0 +1,12 @@
+{
+  "name": "helpdesk-pro-backend",
+  "version": "1.0.0",
+  "description": "HelpDesk Pro Backend API",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "jest"
+  }
+}
