@@ -21,9 +21,7 @@ const PORT = Number(process.env.PORT) || 5001;
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL 
-    : ['http://localhost:5000', 'http://0.0.0.0:5000', 'http://127.0.0.1:5000'],
+  origin: true,
   credentials: true
 }));
 

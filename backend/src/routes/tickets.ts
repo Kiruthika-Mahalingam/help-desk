@@ -118,6 +118,11 @@ router.get('/', asyncHandler(async (req, res) => {
 router.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
   
+  // Skip validation for 'recent' route which should be handled separately
+  if (id === 'recent') {
+    return res.status(404).json({ message: 'Use /tickets/recent endpoint' });
+  }
+  
   // Validate that id is a number
   if (isNaN(parseInt(id))) {
     throw createError('Invalid ticket ID', 400);
